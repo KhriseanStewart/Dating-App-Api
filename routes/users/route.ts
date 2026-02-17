@@ -1,14 +1,10 @@
 import express from "express";
 import { User } from "../../models/User.ts";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import passport from "passport";
+import { signInToken } from "../../util/signIn-token";
 
 export const router = express.Router();
-
-export function signInToken(user: User){
-    return jwt.sign({sub: user._id}, process.env.JWT_SECRET as string, {expiresIn: "1h"});
-}
 
 // POSTING FOR REGISTERING A NEW USER
 router.post("/register", async (req, res) => {

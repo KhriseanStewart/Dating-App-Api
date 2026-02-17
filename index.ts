@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { router as usersRouter } from "./routes/users/route.ts";
 import { router as profileRouter } from "./routes/profile/route.ts";
+import { router as messagingRouter } from "./routes/messaging/route.ts";
 import passport from "passport";
 import configurePassport from "./jwt/jwt.ts";
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(passport.initialize());
 configurePassport();
 
+app.use("/messaging", messagingRouter);
 app.use("/users", usersRouter);
 app.use("/profile", profileRouter);
 

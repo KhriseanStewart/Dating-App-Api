@@ -2,7 +2,6 @@ import express from "express";
 import passport from "passport";
 import type { User } from "../../models/User";
 import { Profile } from "../../models/Profile";
-import { signInToken } from "../users/route";
 export const router = express.Router();
 
 // create user profile
@@ -47,9 +46,7 @@ router.post("/create",passport.authenticate("jwt", { session: false }), async (r
 });
 
 // GET my profile (authenticated user)
-router.get(
-    "/me",
-    passport.authenticate("jwt", { session: false }),
+router.get("/me",passport.authenticate("jwt", { session: false }),
     async (req, res) => {
       try {
         const user = req.user as User;
@@ -72,7 +69,7 @@ router.get(
         });
       }
     }
-  );
+);
 
 // fetch users profile based on ID
 router.get("/:id", passport.authenticate("jwt", {session: false}), async (req, res) =>{
@@ -99,11 +96,8 @@ router.get("/:id", passport.authenticate("jwt", {session: false}), async (req, r
     }
 });
 
-
 // update profile
-router.put(
-    "/update/:id",
-    passport.authenticate("jwt", { session: false }),
+router.put("/update/:id", passport.authenticate("jwt", { session: false }),
     async (req, res) => {
       try {
         const { id } = req.params; // ✅ correct
@@ -144,7 +138,7 @@ router.put(
         });
       }
     }
-  );
+);
   
 
 /*
