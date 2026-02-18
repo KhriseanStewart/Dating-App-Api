@@ -6,6 +6,7 @@ const profileSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       default: () => new mongoose.Types.ObjectId(),
     },  
+    avatar: { type: String, required: false, trim: true },
     user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     name: { type: String, required: true, trim: true },
     age: { type: Number, required: true },

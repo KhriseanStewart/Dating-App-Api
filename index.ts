@@ -4,8 +4,10 @@ import dotenv from "dotenv";
 import { router as usersRouter } from "./routes/users/route.ts";
 import { router as profileRouter } from "./routes/profile/route.ts";
 import { router as messagingRouter } from "./routes/messaging/route.ts";
+import {router as avatarRouter} from "./routes/image/route.ts"
 import passport from "passport";
 import configurePassport from "./jwt/jwt.ts";
+import { r2 } from "./connection/r2client.ts";
 const app = express();
 
 dotenv.config();
@@ -16,6 +18,7 @@ app.use(express.json());
 app.use(passport.initialize());
 configurePassport();
 
+app.use("/avatar", avatarRouter)
 app.use("/messaging", messagingRouter);
 app.use("/users", usersRouter);
 app.use("/profile", profileRouter);
