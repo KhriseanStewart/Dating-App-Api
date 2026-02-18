@@ -1,5 +1,5 @@
 import express from "express";
-import { User } from "../../models/User";
+import { User } from "../../models/User.js";
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { signInToken } from "../../util/signIn-token";

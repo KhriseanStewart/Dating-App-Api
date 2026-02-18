@@ -3,9 +3,9 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import passport from "passport";
 import express from 'express';
-import type { User } from "../../models/User";
+import type { User } from "../../models/User.js";
 import { r2 } from "../../connection/r2client";
-import { Profile } from "../../models/Profile";
+import { Profile } from "../../models/Profile.js";
 
 export const router = express.Router();
 

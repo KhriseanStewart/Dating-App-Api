@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
-import type { User } from "../../models/User";
-import { Profile } from "../../models/Profile";
+import type { User } from "../../models/User.js";
+import { Profile } from "../../models/Profile.js";
 export const router = express.Router();
 
 // create user profile

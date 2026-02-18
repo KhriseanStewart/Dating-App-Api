@@ -6,7 +6,7 @@ import { router as profileRouter } from "./routes/profile/route.js";
 import { router as messagingRouter } from "./routes/messaging/route.js";
 import {router as avatarRouter} from "./routes/image/route.js"
 import passport from "passport";
-import configurePassport from "./jwt/jwt";
+import configurePassport from "./jwt/jwt.js";
 const app = express();
 
 dotenv.config();

@@ -2,7 +2,7 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import bcrypt from "bcrypt";
-import { User } from "../models/User";
+import { User } from "../models/User.js";
 import type { JwtPayload } from "jsonwebtoken";
 
 interface JwtPayloadWithSub extends JwtPayload {
