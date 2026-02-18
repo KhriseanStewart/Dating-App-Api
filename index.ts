@@ -1,13 +1,12 @@
-import { connectDB } from "./connection/connection.ts";
+import { connectDB } from "./connection/connection";
 import express from "express";
 import dotenv from "dotenv";
-import { router as usersRouter } from "./routes/users/route.ts";
-import { router as profileRouter } from "./routes/profile/route.ts";
-import { router as messagingRouter } from "./routes/messaging/route.ts";
-import {router as avatarRouter} from "./routes/image/route.ts"
+import { router as usersRouter } from "./routes/users/route";
+import { router as profileRouter } from "./routes/profile/route";
+import { router as messagingRouter } from "./routes/messaging/route";
+import {router as avatarRouter} from "./routes/image/route"
 import passport from "passport";
-import configurePassport from "./jwt/jwt.ts";
-import { r2 } from "./connection/r2client.ts";
+import configurePassport from "./jwt/jwt";
 const app = express();
 
 dotenv.config();
