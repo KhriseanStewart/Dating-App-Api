@@ -3,12 +3,14 @@ import { User } from "../../models/User.js";
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { signInToken } from "../../util/signIn-token.js";
+import { connectDB } from "../../connection/connection.js";
 
 export const router = express.Router();
 
 // POSTING FOR REGISTERING A NEW USER
 router.post("/register", async (req, res) => {
   try {
+    await connectDB()
     const {email, password, telephone } = req.body ?? {};
 
     if (!email || !password) {
