@@ -2,7 +2,10 @@ import mongoose, { type HydratedDocument } from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    _id: { type: mongoose.Schema.Types.ObjectId, required: true, default: mongoose.Types.ObjectId },
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: () => new mongoose.Types.ObjectId(),
+    },    
     email: {
       type: String,
       required: true,
