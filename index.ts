@@ -1,4 +1,4 @@
-import { connectDB } from "./connection/connection";
+import { connectDB } from "./connection/connection.js";
 import express from "express";
 import dotenv from "dotenv";
 import { router as usersRouter } from "./routes/users/route";
