@@ -1,10 +1,10 @@
 import { connectDB } from "./connection/connection.js";
 import express from "express";
 import dotenv from "dotenv";
-import { router as usersRouter } from "./routes/users/route";
-import { router as profileRouter } from "./routes/profile/route";
-import { router as messagingRouter } from "./routes/messaging/route";
-import {router as avatarRouter} from "./routes/image/route"
+import { router as usersRouter } from "./routes/users/route.js";
+import { router as profileRouter } from "./routes/profile/route.js";
+import { router as messagingRouter } from "./routes/messaging/route.js";
+import {router as avatarRouter} from "./routes/image/route.js"
 import passport from "passport";
 import configurePassport from "./jwt/jwt";
 const app = express();
