@@ -4,7 +4,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import passport from "passport";
 import express from 'express';
 import type { User } from "../../models/User.js";
-import { r2 } from "../../connection/r2client";
+import { r2 } from "../../connection/r2client.js";
 import { Profile } from "../../models/Profile.js";
 
 export const router = express.Router();

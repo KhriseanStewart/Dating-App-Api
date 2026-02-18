@@ -1,7 +1,7 @@
 import passport from "passport";
 import express from "express";
 import { User } from "../../models/User.js";
-import { pairKey } from "../../util/messaging-pair";
+import { pairKey } from "../../util/messaging-pair.js";
 import { Conversation, Message } from "../../models/Message.js";
 
 export const router = express.Router();
