@@ -139,7 +139,25 @@ router.put("/update/:id", passport.authenticate("jwt", { session: false }),
       }
     }
 );
-  
+
+// fetch all profile
+router.get("/all", passport.authenticate("jwt", {session: false}), async (req, res) => {
+    try{
+      const data = await Profile.find();
+      if (!data) {
+          return res.status(404).json({ message: "User not found" });
+      }
+      return res.status(200).json({
+          message: "Profile found",
+          user: data,
+      })
+  } catch(error){
+      return res.status(500).json({
+          message: "Failed to get user profile",
+          error: error instanceof Error ? error.message : String(error),
+      });
+  }
+})
 
 /*
     user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
