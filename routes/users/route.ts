@@ -3,14 +3,12 @@ import { User } from "../../models/User.js";
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { signInToken } from "../../util/signIn-token.js";
-import { connectDB } from "../../connection/connection.js";
 
 export const router = express.Router();
 
 // POSTING FOR REGISTERING A NEW USER
 router.post("/register", async (req, res) => {
   try {
-    await connectDB()
     const {email, password, telephone } = req.body ?? {};
 
     if (!email || !password) {
@@ -52,7 +50,7 @@ router.post("/register", async (req, res) => {
       user: safeUser,
     });
   } catch (error) {
-    // Duplicate email unique index
+    console.error("[Users] Register error:", error);
     if (
       typeof error === "object" &&
       error !== null &&
@@ -61,7 +59,6 @@ router.post("/register", async (req, res) => {
     ) {
       return res.status(409).json({ message: "Email already registered" });
     }
-
     return res.status(400).json({
       message: "Failed to register user",
       error: error instanceof Error ? error.message : String(error),
@@ -80,6 +77,7 @@ router.post("/login", passport.authenticate("local", { session: false }), async 
       user: user,
     });
   } catch (error) {
+    console.error("[Users] Login error:", error);
     return res.status(500).json({
       message: "Failed to login",
       error: error instanceof Error ? error.message : String(error),
@@ -100,6 +98,7 @@ router.get("/me",
           user: user,
         });
       } catch (error) {
+        console.error("[Users] /me error:", error);
         return res.status(500).json({
           message: "Failed to get authenticated user",
           error: error instanceof Error ? error.message : String(error),
@@ -128,6 +127,7 @@ router.get("/:id", async (req, res) => {
       user: safeUser,
     });
   } catch (error) {
+    console.error("[Users] GET /:id error:", error);
     return res.status(500).json({
       message: "Failed to get user",
       error: error instanceof Error ? error.message : String(error),
@@ -155,6 +155,7 @@ router.delete("/:id", async (req, res) => {
       user: safeUser,
     });
   } catch (error) {
+    console.error("[Users] DELETE /:id error:", error);
     return res.status(500).json({
       message: "Failed to delete user",
       error: error instanceof Error ? error.message : String(error),
