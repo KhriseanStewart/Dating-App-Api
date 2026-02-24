@@ -5,6 +5,8 @@ import { router as usersRouter } from "./routes/users/route.js";
 import { router as profileRouter } from "./routes/profile/route.js";
 import { router as messagingRouter } from "./routes/messaging/route.js";
 import { router as avatarRouter } from "./routes/image/route.js";
+import { router as swipesRouter } from "./routes/swipes/route.js";
+import { router as matchesRouter } from "./routes/matches/route.js";
 import passport from "passport";
 import configurePassport from "./jwt/jwt.js";
 
@@ -19,6 +21,8 @@ configurePassport();
 
 app.use("/avatar", avatarRouter);
 app.use("/messaging", messagingRouter);
+app.use("/swipes", swipesRouter);
+app.use("/matches", matchesRouter);
 app.use("/users", usersRouter);
 app.use("/profile", profileRouter);
 
